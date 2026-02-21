@@ -4,7 +4,7 @@
  */
 const portfolioData = {
   profile: {
-    name: "YOUR NAME",
+    name: "Serang",
     role: "Frontend Developer",
     taglineKo:
       "사용자 문제를 제품 가치로 연결하는 프론트엔드 개발자입니다. 명확한 구조와 빠른 성능을 중요하게 생각합니다.",

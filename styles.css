@@ -4,6 +4,8 @@
   --text: #121417;
   --muted: #4e5662;
   --accent: #0a66c2;
+  --accent-violet: #7a4dff;
+  --accent-mix: linear-gradient(120deg, #0a66c2 0%, #7a4dff 100%);
   --border: #d8dee6;
   --radius: 14px;
   --space-1: 0.5rem;
@@ -35,6 +37,7 @@ body {
   background-image:
     radial-gradient(circle at 10% 10%, #e5eef8 0%, transparent 35%),
     radial-gradient(circle at 90% 10%, #e8f4ef 0%, transparent 30%),
+    radial-gradient(circle at 70% 32%, #f0eaff 0%, transparent 40%),
     linear-gradient(135deg, #f7f9fb 0%, #eef2f6 100%);
 }
 
@@ -90,6 +93,16 @@ button:focus-visible {
   font-weight: 700;
   letter-spacing: 0.03em;
   text-decoration: none;
+  color: var(--accent);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .brand {
+    background-image: var(--accent-mix);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 .nav-list {
@@ -116,6 +129,19 @@ button:focus-visible {
 
 .hero {
   padding-top: calc(var(--space-7) + 1rem);
+  position: relative;
+  overflow: clip;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -80px -120px auto;
+  width: 280px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d8c9ff 0%, #d8c9ff00 70%);
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -186,8 +212,9 @@ h1 {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--accent-mix);
   color: #fff;
+  box-shadow: 0 10px 24px -16px #7a4dffbf;
 }
 
 .btn-primary:hover {
@@ -255,6 +282,16 @@ h1 {
   border-radius: var(--radius);
   padding: var(--space-4);
   box-shadow: 0 8px 20px -18px #1f293733;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: #c8b7ff;
+  box-shadow: 0 18px 35px -24px #6a42df66;
 }
 
 .project-title {
@@ -317,7 +354,7 @@ h1 {
 }
 
 .contact-item a:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-violet);
 }
 
 .contact-label {
